@@ -71,7 +71,7 @@ def save_fig(fig, name, path=None, tight_layout=True):
     fig.savefig(os.path.join(path, f'{name}.pdf'), transparent=True)
 
 
-def animate(Y_test, Y_preds, labels, fraction=1, fps=100, save_ani=False):
+def animate(Y_test, Y_preds, labels, fraction=1, fps=100, save_ani=False, save_dir=None, fname="ani.gif"):
     """
     Creates a animation of robot along the time.
 
@@ -201,17 +201,17 @@ def animate(Y_test, Y_preds, labels, fraction=1, fps=100, save_ani=False):
             polygons_coords = q_2_polygons(Y_pred[frame])
             for i, j in enumerate(plot_order):
                 ploygon_lists_preds[index][i].set_xy(polygons_coords[j])
-
+    
+    fig.tight_layout()
     ani = FuncAnimation(fig, update_plot, frames=len(Y_test), fargs=(title,),
                         interval=1000 / fps)
     if save_ani:
-        if not os.path.exists(FIGURES_PATH):
-            os.makedirs(FIGURES_PATH)
+        if not os.path.exists(save_dir):
+            os.makedirs(save_dir)
         # ani.save(os.path.join(FIGURES_PATH, 'ani.mp4'), writer='ffmpeg', fps=fps)
-        ani.save(os.path.join(FIGURES_PATH, 'ani.gif'), writer='imagemagick', fps=fps)
+        ani.save(os.path.join(save_dir, fname), writer='imagemagick', fps=fps)
 
-    fig.tight_layout()
-    plt.show()
+    #plt.show()
 
 
 def plot_input_sequence(T, U, filename=None):
