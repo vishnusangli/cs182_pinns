@@ -1,8 +1,8 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-from utils.angle_helpers import wrap_angles
-from utils.exact import exact_RK
+from utils2.angle_helpers import wrap_angles
+from utils2.exact import exact_RK
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # HELPER FUNCTIONS FOR PLOTTING 
