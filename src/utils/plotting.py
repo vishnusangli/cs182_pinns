@@ -215,7 +215,7 @@ def animate(Y_test, Y_preds, labels, fraction=1, fps=100, save_ani=False, save_d
     plt.close()
 
 
-def plot_input_sequence(T, U, filename=None):
+def plot_input_sequence(T, U, filename=None, title=None):
     M = U.shape[1]
     linewidth = 2
     fig = new_fig()
@@ -228,12 +228,14 @@ def plot_input_sequence(T, U, filename=None):
     ax.legend(loc='best')
     ax.grid('on')
     fig.tight_layout()
+    if title is not None:
+        plt.title(title)
     if filename is not None:
         save_fig(fig, filename)
     plt.show()
 
 
-def plot_states(T, Z_ref, Z_pred=None, Z_mpc=None, filename=None):
+def plot_states(T, Z_ref, Z_pred=None, Z_mpc=None, filename=None, title=None):
     linewidth = 2
     fig = new_fig()
     ax = fig.add_subplot(1, 1, 1)
@@ -254,10 +256,12 @@ def plot_states(T, Z_ref, Z_pred=None, Z_mpc=None, filename=None):
     fig.tight_layout()
     if filename is not None:
         save_fig(fig, filename)
+    if title is not None:
+        plt.title(title)
     plt.show()
 
 
-def plot_absolute_error(T, Z_ref, Z_pred=None, Z_mpc=None, filename=None):
+def plot_absolute_error(T, Z_ref, Z_pred=None, Z_mpc=None, filename=None, title=None):
     states = [r'\alpha', r'\beta']
     colors = ['tab:blue', 'tab:red']
     fig = new_fig()
@@ -287,5 +291,7 @@ def plot_absolute_error(T, Z_ref, Z_pred=None, Z_mpc=None, filename=None):
     ax.legend(loc='best')
     if filename is not None:
         save_fig(fig, filename)
+    if title is not None:
+        plt.title(title)
     fig.tight_layout()
     plt.show()
