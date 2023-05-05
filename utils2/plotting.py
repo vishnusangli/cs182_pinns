@@ -55,7 +55,10 @@ def legend_without_duplicate_labels(ax, bbox, idx=None, alpha=0, ncol=1, loc='be
     handles, labels = ax.get_legend_handles_labels()
     unique = np.array([(h, l) for i, (h, l) in enumerate(zip(handles, labels)) if l not in labels[:i]])
     if idx!=None:  
-        unique = unique[np.array(idx)]
+        try:
+          unique = unique[np.array(idx)]
+        except:
+           pass
     
     ax.legend(*zip(*unique),framealpha=alpha, bbox_to_anchor=bbox, ncol=ncol,loc=loc, fontsize=fontsize)
 
@@ -259,8 +262,8 @@ class Plotting():
 
     color = 'tab:cyan'
 
-    axes[0].plot(x_new, wrap_angles(y_cont[0]), '-', c=color, label = self.method+'$_{\mathrm{shifted}}$: $\\theta_1$')
-    axes[0].plot(x_new, wrap_angles(y_cont[1]), '--', c=color, label = self.method+'$_{\mathrm{shifted}}$: $\\theta_2$')
+    # axes[0].plot(x_new, wrap_angles(y_cont[0]), '-', c=color, label = self.method+'$_{\mathrm{shifted}}$: $\\theta_1$')
+    # axes[0].plot(x_new, wrap_angles(y_cont[1]), '--', c=color, label = self.method+'$_{\mathrm{shifted}}$: $\\theta_2$')
 
-    axes[1].plot(x_new, y_cont[2], '-', c=color, label = self.method+'$_{\mathrm{shifted}}$: $\omega_1$')
-    axes[1].plot(x_new, y_cont[3], '--', c=color, label = self.method+'$_{\mathrm{shifted}}$: $\omega_2$')
+    # axes[1].plot(x_new, y_cont[2], '-', c=color, label = self.method+'$_{\mathrm{shifted}}$: $\omega_1$')
+    # axes[1].plot(x_new, y_cont[3], '--', c=color, label = self.method+'$_{\mathrm{shifted}}$: $\omega_2$')
