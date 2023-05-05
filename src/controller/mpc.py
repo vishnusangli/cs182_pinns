@@ -123,7 +123,7 @@ class MPC:
     def sim_open_loop(self, x0, u_array, t_sample, H, noise_val=0.0):
         t = tf.constant(t_sample, dtype=tf.float64, shape=(1, 1))
         x_i = tf.expand_dims(x0, 0)
-        X_pred = x_i + (noise_val*tf.random.normal(x_i.shape))
+        X_pred = x_i + (noise_val*tf.random.normal(x_i.shape, dtype=tf.dtypes.float64))
 
         for i in range(H):
             x = tf.concat((t, x_i, u_array[i:i + 1]), 1)
