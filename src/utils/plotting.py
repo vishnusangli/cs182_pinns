@@ -212,6 +212,7 @@ def animate(Y_test, Y_preds, labels, fraction=1, fps=100, save_ani=False, save_d
         ani.save(os.path.join(save_dir, fname), writer='imagemagick', fps=fps)
 
     #plt.show()
+    plt.close()
 
 
 def plot_input_sequence(T, U, filename=None):
