@@ -2,7 +2,7 @@ import json
 import numpy as np
 
 from pathlib import Path
-from utils.write_log_helper import return_log_path
+from utils2.write_log_helper import return_log_path
 
 
 class CustomCallback():
